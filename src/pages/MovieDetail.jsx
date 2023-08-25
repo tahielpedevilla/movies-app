@@ -21,7 +21,7 @@ function MovieDetail() {
 
 	if (!movie) {
 		return (
-			<div className="h-screen w-full grid place-items-center text-xl animate-pulse text-center">
+			<div className="h-[calc(100vh-64px)] w-full grid place-items-center text-xl animate-pulse text-center">
 				Loading...
 			</div>
 		);
