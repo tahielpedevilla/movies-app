@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MovieService } from "../services/movieServices";
+import { Link } from "wouter";
 
 const Navbar = () => {
 	return (
@@ -59,12 +60,13 @@ const Search = () => {
 
 	const handleSearch = async () => {
 		try {
-			const searchResults = await MovieService.searchMovies(searchInput); // Implement this method in MovieService
+			const searchResults = await MovieService.searchMovies(searchInput);
 			setSearchResults(searchResults);
 		} catch (error) {
 			console.error(error);
 		}
 	};
+
 	return (
 		<div className="relative">
 			<input
@@ -74,7 +76,10 @@ const Search = () => {
 				value={searchInput}
 				onChange={handleSearchInputChange}
 			/>
-			<button className="absolute right-2 top-1/2 transform -translate-y-1/2">
+			<button
+				className="absolute right-2 top-1/2 transform -translate-y-1/2"
+				onClick={handleSearch}
+			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -90,6 +95,15 @@ const Search = () => {
 					/>
 				</svg>
 			</button>
+			{searchResults.length > 0 && (
+          <div className="absolute mt-2 py-2 bg-white rounded-md shadow-md w-full z-10 top-full">
+            {searchResults.map((result) => (
+              <Link key={result.id} to={`/movie/${result.id}`} className="block px-4 py-2 hover:bg-gray-100">
+                {result.title}
+              </Link>
+            ))}
+          </div>
+        )}
 		</div>
 	);
 };

@@ -20,7 +20,11 @@ function MovieDetail() {
 	}, [params.movieId]);
 
 	if (!movie) {
-		return <div className="h-screen w-full grid place-items-center -mt-10 text-xl animate-pulse text-center">Loading...</div>;
+		return (
+			<div className="h-screen w-full grid place-items-center text-xl animate-pulse text-center">
+				Loading...
+			</div>
+		);
 	}
 
 	return (
