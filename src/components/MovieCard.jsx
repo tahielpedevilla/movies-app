@@ -31,7 +31,7 @@ const MovieCard = ({ movie }) => {
 					</svg>
 				</button>
 				<img
-					className="hover:scale-[1.01] transition duration-300 ease-in-out relative rounded-xl"
+					className="hover:scale-[1.01] transition duration-300 ease-in-out relative rounded-xl aspect-[10/16] object-cover"
 					src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
 					alt={movie.title}
 					loading="lazy"
