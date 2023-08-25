@@ -27,6 +27,15 @@ function MovieDetail() {
 		);
 	}
 
+	const handleAddFavorite = async (movie) => {
+		try {
+			console.log(movie);
+			await MovieService.addMovieToFavorites(movie);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	return (
 		<main className="container mx-auto px-6">
 			<section className="py-20 flex flex-col lg:flex-row w-full gap-8">
@@ -36,16 +45,19 @@ function MovieDetail() {
 					className="rounded-xl lg:w-72"
 				/>
 				<div className="flex flex-col">
-					<div className="flex items-center gap-2">
+				<div className="flex items-center gap-2 overflow-x-auto snap-proximity snap-x pb-3">
 						{movie.genres.map((genre) => (
-							<span key={genre.id} className="bg-white/20 px-3 py-1 rounded-full">
+							<span key={genre.id} className="bg-white/20 px-3 py-1 rounded-full snap-end">
 								{genre.name}
 							</span>
 						))}
 					</div>
 					<h1 className="text-4xl font-bold pb-8 mt-4">{movie.title}</h1>
 					<p className="text-xl">{movie.overview}</p>
-					<button className="bg-blue-500 mt-8 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded lg:w-fit">
+					<button
+						className="bg-blue-500 mt-8 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded lg:w-fit"
+						onClick={() => handleAddFavorite(movie)}
+					>
 						Add to Favorites
 					</button>
 				</div>
