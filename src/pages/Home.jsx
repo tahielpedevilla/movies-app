@@ -30,7 +30,7 @@ const Home = () => {
 		<main className="container mx-auto px-6">
 			<section className="py-20 flex items-center w-full flex-col">
 				<h1 className="text-4xl font-bold pb-8">Popular Movies</h1>
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] w-full gap-8">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] w-full gap-x-8 gap-y-14">
 					{popularMovies.map((movie) => (
 						<MovieCard key={movie.id} movie={movie} />
 					))}
