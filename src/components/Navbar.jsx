@@ -96,12 +96,12 @@ const Search = () => {
 				</svg>
 			</button>
 			{searchResults.length > 0 && (
-				<div className="absolute mt-2 py-2 bg-white rounded-md shadow-md w-full z-10 top-full">
+				<div className="absolute mt-2 p-2 bg-white rounded-md shadow-md w-full z-10 top-full text-gray-800">
 					{searchResults.map((result) => (
 						<Link
 							key={result.id}
 							to={`/movie/${result.id}`}
-							className="block px-4 py-2 hover:bg-gray-100"
+							className="block px-4 py-2 hover:bg-gray-100 rounded-[4px]"
 						>
 							{result.title}
 						</Link>
