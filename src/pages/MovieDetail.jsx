@@ -29,8 +29,7 @@ function MovieDetail() {
 
 	const handleAddFavorite = async (movie) => {
 		try {
-			console.log(movie);
-			await MovieService.addMovieToFavorites(movie);
+			await MovieService.addMovieToFavorites(movie.id);
 		} catch (error) {
 			console.error(error);
 		}

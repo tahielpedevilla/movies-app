@@ -5,7 +5,7 @@ import { MovieService } from "../services/movieServices";
 const MovieCard = ({ movie }) => {
 	const handleAddFavorite = async (movie) => {
 		try {
-			await MovieService.addMovieToFavorites(movie);
+			await MovieService.addMovieToFavorites(movie.id);
 		} catch (error) {
 			console.error(error);
 		}

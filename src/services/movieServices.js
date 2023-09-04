@@ -50,7 +50,7 @@ export const MovieService = {
 		}
 	},
 
-	addMovieToFavorites: async (movie) => {
+	addMovieToFavorites: async (movieId) => {
 		try {
 			const response = await fetch("https://api.themoviedb.org/3/account/11107077/favorite", {
 				method: "POST",
@@ -60,7 +60,7 @@ export const MovieService = {
 					"Authorization":
 						"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNWY2Yzc4ZDQzZTc3YzZlNTNlZjdiYzU4YmYxNmQ5NSIsInN1YiI6IjYxM2ZhMDBkYWFmODk3MDA4YzA3YTNhMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Wi45m-TV3qUhhhWsgo1cYNRNwkoLeVAe0hTjaWtY-Yw",
 				},
-				body: JSON.stringify(movie),
+				body: JSON.stringify({media_type: 'movie', media_id: movieId, favorite: true}),
 			});
 
 			const data = await response.json();
@@ -71,10 +71,10 @@ export const MovieService = {
 		}
 	},
 
-	searchMovies: async (movie) => {
+	searchMovies: async (movieName) => {
 		try {
 			const response = await fetch(
-				`https://api.themoviedb.org/3/search/movie?query=${movie}&include_adult=false&language=en-US&page=1`,
+				`https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1`,
 				options,
 			);
 
